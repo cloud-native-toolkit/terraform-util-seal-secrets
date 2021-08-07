@@ -1,7 +1,7 @@
 
 locals {
   tmp_dir = "${path.cwd}/.tmp/sealed_secrets"
-  sealed_secrets_file = "${local.tmp_dir}/${label}.yaml"
+  sealed_secrets_file = "${local.tmp_dir}/${var.label}.yaml"
   sealed_secrets = yamldecode(data.local_file.sealed_secrets.content)
 }
 

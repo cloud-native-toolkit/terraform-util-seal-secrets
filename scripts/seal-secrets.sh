@@ -11,7 +11,7 @@ if [[ -z "${TMP_DIR}" ]]; then
   TMP_DIR=".tmp"
 fi
 
-SEALED_SECRETS_DIR=$(dirname "${SEALED_SECRETS_FILE}"; pwd -P)
+SEALED_SECRETS_DIR=$(dirname "${SEALED_SECRETS_FILE}")
 
 mkdir -p "${TMP_DIR}"
 mkdir -p "${DEST_DIR}"

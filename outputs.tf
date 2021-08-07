@@ -4,7 +4,7 @@ output "dest_dir" {
   depends_on  = [null_resource.seal_secrets]
 }
 
-variable "sealed_secrets" {
+output "sealed_secrets" {
   description = "List of secret files that were sealed by the cert"
   value       = local.sealed_secrets
   depends_on  = [null_resource.seal_secrets]

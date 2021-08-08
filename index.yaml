@@ -1,11 +1,20 @@
 id: github.com/cloud-native-toolkit/terraform-util-seal-secrets
-name: ""
+name: seal-secrets-util
 type: terraform
-description: ""
+description: Module to encrypt or "seal" kube secrets using kubeseal cli and provided cert. Each of the yaml files in the `source_dir` is encrypted with the cert and written into the `dest_dir` directory.
 tags:
-  - tools
-  - devops
+  - sealed secrets
+  - util
 versions:
+  - platforms: []
+    dependencies: []
+    variables: [{name: source_dir, type: string, description: The directory containing the secrets that will be encrypted using the cert}, {name: dest_dir, type: string, description: The directory where the sealed secrets will be written. If the directory does not exist it will be created}, {name: kubeseal_cert, type: string, description: The certificate/public key used to encrypt the sealed secrets, default: "", optional: true}, {name: label, type: string, description: The label for the collection of secrets}]
+    version: v1.0.0
+    outputs:
+      - name: dest_dir
+        description: The destination directory for the sealed secrets
+      - name: sealed_secrets
+        description: List of secret files that were sealed by the cert
   - platforms:
       - kubernetes
       - ocp3
@@ -27,28 +36,3 @@ versions:
     #          version: ">= 1.6.0"
     variables: []
     version: v0.0.0
-#    - name: cluster_type
-#      moduleRef:
-#        id: cluster
-#        output: type_code
-#    - name: cluster_ingress_hostname
-#      moduleRef:
-#        id: cluster
-#        output: ingress_hostname
-#    - name: cluster_config_file
-#      moduleRef:
-#        id: cluster
-#        output: config_file_path
-#    - name: tls_secret_name
-#      moduleRef:
-#        id: cluster
-#        output: tls_secret_name
-#    - name: releases_namespace
-#      moduleRef:
-#        id: namespace
-#        output: name
-#        discriminator: tools
-#    - name: icon_url
-#      moduleRef:
-#        id: dashboard
-#        output: base_icon_url

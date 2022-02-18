@@ -26,12 +26,11 @@ fi
 KUBESEAL_CERT_FILE="${TMP_DIR}/kubeseal.cert"
 echo "${KUBESEAL_CERT}" > "${KUBESEAL_CERT_FILE}"
 
-KUBESEAL=$(command -v kubeseal | command -v ./bin/kubeseal)
+KUBESEAL=$(command -v kubeseal | command -v "${BIN_DIR}/kubeseal")
+
 if [[ -z "${KUBESEAL}" ]]; then
-  BIN_DIR=$(cd ./bin; pwd -P)
-  mkdir -p "${BIN_DIR}" && curl -Lo "${BIN_DIR}/kubeseal" https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.16.0/kubeseal-linux-amd64
-  chmod +x "${BIN_DIR}/kubeseal"
-  KUBESEAL="${BIN_DIR}/kubeseal"
+  echo "kubeseal cli not found"
+  exit 1
 fi
 
 echo "Kubeseal cert"

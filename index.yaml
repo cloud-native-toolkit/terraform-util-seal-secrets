@@ -8,6 +8,13 @@ tags:
 versions:
   - platforms: []
     dependencies: []
+    variables: [{name: source_dir, type: string, description: The directory containing the secrets that will be encrypted using the cert}, {name: dest_dir, type: string, description: The directory where the sealed secrets will be written. If the directory does not exist it will be created}, {name: kubeseal_cert, type: string, description: The certificate/public key used to encrypt the sealed secrets}, {name: label, type: string, description: The label for the collection of secrets}]
+    version: v1.0.2
+    outputs:
+      - name: dest_dir
+        description: The destination directory for the sealed secrets
+  - platforms: []
+    dependencies: []
     variables: [{name: source_dir, type: string, description: The directory containing the secrets that will be encrypted using the cert}, {name: dest_dir, type: string, description: The directory where the sealed secrets will be written. If the directory does not exist it will be created}, {name: kubeseal_cert, type: string, description: The certificate/public key used to encrypt the sealed secrets, default: "", optional: true}, {name: label, type: string, description: The label for the collection of secrets}]
     version: v1.0.1
     outputs:

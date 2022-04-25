@@ -7,7 +7,7 @@ locals {
 module setup_clis {
   source = "github.com/cloud-native-toolkit/terraform-util-clis.git"
 
-  clis = ["kubeseal"]
+  clis = ["kubeseal", "kubectl"]
 }
 
 resource null_resource seal_secrets {
@@ -18,6 +18,7 @@ resource null_resource seal_secrets {
       TMP_DIR = local.tmp_dir
       BIN_DIR = module.setup_clis.bin_dir
       KUBESEAL_CERT = var.kubeseal_cert
+      ANNOTATIONS = join(" ", var.annotations)
     }
   }
 }

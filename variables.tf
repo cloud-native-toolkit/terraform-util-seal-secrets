@@ -17,3 +17,9 @@ variable "label" {
   type        = string
   description = "The label for the collection of secrets"
 }
+
+variable "annotations" {
+  type        = list(string)
+  description = "The list of annotations that should be added to the generated Sealed Secrets. Expected format of each annotation is a string if 'key=value'"
+  default     = []
+}

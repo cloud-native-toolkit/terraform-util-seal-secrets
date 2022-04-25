@@ -5,4 +5,5 @@ module "seal_secrets" {
   dest_dir = "${path.cwd}/sealed-secrets"
   label = "test"
   kubeseal_cert = module.cert.cert
+  annotations = ["argocd.argoproj.io/sync-wave=-5"]
 }
